@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'movie_store.dart';
+part of 'movie_store4.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,53 +8,20 @@ part of 'movie_store.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$MovieStore on _MovieStore, Store {
-  late final _$isDataFetchedAtom =
-      Atom(name: '_MovieStore.isDataFetched', context: context);
+mixin _$MovieStore4 on _MovieStore, Store {
+  late final _$isDataFatchedAtom =
+      Atom(name: '_MovieStore.isDataFatched', context: context);
 
   @override
-  bool get isDataFetched {
-    _$isDataFetchedAtom.reportRead();
-    return super.isDataFetched;
+  bool get isDataFatched {
+    _$isDataFatchedAtom.reportRead();
+    return super.isDataFatched;
   }
 
   @override
-  set isDataFetched(bool value) {
-    _$isDataFetchedAtom.reportWrite(value, super.isDataFetched, () {
-      super.isDataFetched = value;
-    });
-  }
-
-  late final _$isDataFetchedForRefreshIndicatorAtom = Atom(
-      name: '_MovieStore.isDataFetchedForRefreshIndicator', context: context);
-
-  @override
-  bool get isDataFetchedForRefreshIndicator {
-    _$isDataFetchedForRefreshIndicatorAtom.reportRead();
-    return super.isDataFetchedForRefreshIndicator;
-  }
-
-  @override
-  set isDataFetchedForRefreshIndicator(bool value) {
-    _$isDataFetchedForRefreshIndicatorAtom
-        .reportWrite(value, super.isDataFetchedForRefreshIndicator, () {
-      super.isDataFetchedForRefreshIndicator = value;
-    });
-  }
-
-  late final _$movieListFutureAtom =
-      Atom(name: '_MovieStore.movieListFuture', context: context);
-
-  @override
-  ObservableFuture<List<Movie>>? get movieListFuture {
-    _$movieListFutureAtom.reportRead();
-    return super.movieListFuture;
-  }
-
-  @override
-  set movieListFuture(ObservableFuture<List<Movie>>? value) {
-    _$movieListFutureAtom.reportWrite(value, super.movieListFuture, () {
-      super.movieListFuture = value;
+  set isDataFatched(bool value) {
+    _$isDataFatchedAtom.reportWrite(value, super.isDataFatched, () {
+      super.isDataFatched = value;
     });
   }
 
@@ -149,9 +116,7 @@ mixin _$MovieStore on _MovieStore, Store {
   @override
   String toString() {
     return '''
-isDataFetched: ${isDataFetched},
-isDataFetchedForRefreshIndicator: ${isDataFetchedForRefreshIndicator},
-movieListFuture: ${movieListFuture},
+isDataFatched: ${isDataFatched},
 rateListFuture: ${rateListFuture},
 deleteRateFuture: ${deleteRateFuture},
 page: ${page}

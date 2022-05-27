@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:movie_db/color/color.dart';
-import 'package:movie_db/screen/now_playing_detail_screen.dart';
-import 'package:movie_db/store/movie_store.dart';
+import 'package:movie_db/widget/now_playing_detail_screen.dart';
+import 'package:movie_db/store/movie_store1.dart';
 
 // ignore: must_be_immutable
 class NowPlaying extends StatefulWidget {
@@ -11,7 +11,7 @@ class NowPlaying extends StatefulWidget {
 }
 
 class _NowPlayingState extends State<NowPlaying> {
-  MovieStore store = MovieStore();
+  MovieStore1 store = MovieStore1();
 
   // var _isLoading = false;
 
@@ -141,9 +141,6 @@ class _NowPlayingState extends State<NowPlaying> {
                       },
                     ),
                   ),
-                  // : Container(
-                  //     decoration: BoxDecoration(),
-                  //   ),
                 ),
                 if (store.isDataFetched) const CircularProgressIndicator(),
                 if (store.isDataFetched)

@@ -1,27 +1,25 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
-import 'package:movie_db/api_class.dart';
+import 'package:movie_db/api_class3.dart';
 
-class NetworkService {
-  List<Movie> movies = [];
+class NetworkServices3 {
+  List<Movie3> movies = [];
 
   Future getMovies(int page) async {
-
     final url = Uri.parse(
-        'https://api.themoviedb.org/3/movie/now_playing?api_key=d107bbcaad068a47cb2e84855e8d1abd&language=en-US&page=$page');
+        'https://api.themoviedb.org/3/movie/top_rated?api_key=d107bbcaad068a47cb2e84855e8d1abd&language=en-US&page=$page');
     final response = await http.get(url);
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
       movies = (result['results'] as List).map((json) {
-        return Movie.fromJSON(json);
+        return Movie3.fromJSON(json);
       }).toList();
-      print(response.body);
-      print('response successful for movies');
+      print('Response is successful for top rated screen');
       return movies;
     } else {
-      // ignore: avoid_print
-      print('Error in URL');
+      print('Error in url');
     }
   }
 
