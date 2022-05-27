@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:movie_db/color/color.dart';
+import 'package:movie_db/store/movie_store4.dart';
 
-import '../store/movie_store.dart';
+import '../color/color.dart';
 
-class NowPlayingDetailScreen extends StatefulWidget {
-  static const routeName = '/now-playing-detail-screen';
+class UpcomingDetailScreen extends StatefulWidget {
+  const UpcomingDetailScreen({Key? key}) : super(key: key);
+
+  static const routeName = 'Upcoming-Detail-Screen';
 
   @override
-  State<NowPlayingDetailScreen> createState() => _NowPlayingDetailScreenState();
+  State<UpcomingDetailScreen> createState() => _UpcomingDetailScreenState();
 }
 
-class _NowPlayingDetailScreenState extends State<NowPlayingDetailScreen> {
+class _UpcomingDetailScreenState extends State<UpcomingDetailScreen> {
   double _rating = 0;
 
-  MovieStore store = MovieStore();
+  MovieStore4 store = MovieStore4();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class _NowPlayingDetailScreenState extends State<NowPlayingDetailScreen> {
         builder: (BuildContext context) => AlertDialog(
           title: const Text('Thanks for rating'),
           content: const Text(
-              'Your valuable rating to helps others people to watch more this movie.'),
+              'Your valuable rating to helps other people to watch more this movie.'),
           actions: [
             TextButton(
                 onPressed: () {
@@ -176,77 +178,85 @@ class _NowPlayingDetailScreenState extends State<NowPlayingDetailScreen> {
         context: context,
         builder: (_) {
           return Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-            height: 165,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+            height: 200,
             width: double.infinity,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30), topRight: Radius.circular(30)),
             ),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 16,
-                ),
-                const Text(
-                  'Do you want to delete your rating ?',
-                  textAlign: TextAlign.justify,
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 16,
                   ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Container(
-                        height: 40,
-                        width: 110,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(7),
-                            color: Colors.grey[300]),
-                        child: const Center(
-                          child: Text(
-                            'No',
-                            style: TextStyle(
-                              fontSize: 20,
+                  const Text(
+                    'Do you want to delete your rating ?',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 110,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7),
+                              color: Colors.grey[300]),
+                          child: const Center(
+                            child: Text(
+                              'No',
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 25,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        store.deleteTheRate(allMovies.id);
-                        rateDeleteShowDialog(context);
-                      },
-                      child: Container(
-                        height: 40,
-                        width: 110,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: Colors.blue),
-                        child: const Center(
-                          child: Text(
-                            'Yes',
-                            style: TextStyle(fontSize: 20, color: Colors.white),
+                      const SizedBox(
+                        width: 25,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          store.deleteTheRate(allMovies.id);
+                          Navigator.of(context).pop();
+                          rateDeleteShowDialog(context);
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 110,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.blue),
+                          child: const Center(
+                            child: Text(
+                              'Yes',
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.white),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                ],
+              ),
             ),
           );
         },

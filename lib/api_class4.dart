@@ -1,4 +1,4 @@
-class Movie {
+class Movie4 {
   int id;
   String title;
   String image;
@@ -8,7 +8,7 @@ class Movie {
   String releaseDate;
   num popularity;
 
-  Movie({
+  Movie4({
     required this.id,
     required this.title,
     required this.image,
@@ -19,8 +19,8 @@ class Movie {
     required this.popularity,
   });
 
-  factory Movie.fromJSON(Map<String, dynamic> json) {
-    return Movie(
+  factory Movie4.fromJSON(Map<String, dynamic> json) {
+    return Movie4(
       id: json['id'],
       title: json['title'],
       image: json['backdrop_path'].toString(),

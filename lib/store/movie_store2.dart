@@ -1,25 +1,16 @@
-import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
-import 'package:movie_db/api_class.dart';
-import 'package:movie_db/network_services.dart';
+import 'package:movie_db/api_class2.dart';
+import 'package:movie_db/network_services2.dart';
 
-part 'movie_store.g.dart';
+part 'movie_store2.g.dart';
 
-class MovieStore = _MovieStore with _$MovieStore;
+class MovieStore2 = _MovieStroe with _$MovieStore2;
 
-abstract class _MovieStore with Store {
-  int? counterPages;
-
-  NetworkService httpClient = NetworkService();
+abstract class _MovieStroe with Store {
+  NetworkServices2 httpClient = NetworkServices2();
 
   @observable
-  bool isDataFetched = false;
-
-  @observable
-  bool isDataFetchedForRefreshIndicator = false;
-
-  @observable
-  ObservableFuture<List<Movie>>? movieListFuture;
+  bool isDataFatched = false;
 
   @observable
   ObservableFuture? rateListFuture;
@@ -30,28 +21,24 @@ abstract class _MovieStore with Store {
   @observable
   int page = 1;
 
-  ObservableList<Movie> movies = ObservableList<Movie>();
+  ObservableList<Movie2> movies = ObservableList<Movie2>();
 
   @action
   Future fetchMovie() async {
-    isDataFetched = true;
-    // isDataFetchedForRefreshIndicator = true;
+    isDataFatched = true;
     var res = await httpClient.getMovies(int.parse(page.toString()));
     if (res != null) {
       movies.addAll(res);
       page++;
     }
-    // isDataFetchedForRefreshIndicator = true;
     if (res == null) {
       return;
     }
-    isDataFetched = false;
+    isDataFatched = false;
   }
 
   @action
   Future fetchTheMovie() async {
-    // isDataFetched = true;
-    // isDataFetchedForRefreshIndicator = true;
     var res = await httpClient.getMovies(int.parse(page.toString()));
     if (res != null) {
       movies.addAll(res);
@@ -67,10 +54,6 @@ abstract class _MovieStore with Store {
   Future delRate(int id) => deleteRateFuture = ObservableFuture(
       httpClient.deleteRate(id).then((deleteRates) => deleteRates));
 
-  // void getTheMovies() {
-  //   fetchMovie();
-  // }
-
   void postTheRate(double rating, int id) {
     submitRate(rating, id);
   }
@@ -78,4 +61,5 @@ abstract class _MovieStore with Store {
   void deleteTheRate(int id) {
     delRate(id);
   }
+
 }
