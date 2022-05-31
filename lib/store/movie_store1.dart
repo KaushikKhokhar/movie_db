@@ -1,14 +1,12 @@
 import 'package:mobx/mobx.dart';
-import 'package:movie_db/api_class1.dart';
-
-import '../network_services1.dart';
+import 'package:movie_db/api_classes/api_class1.dart';
+import '../network_services/network_services1.dart';
 
 part 'movie_store1.g.dart';
 
 class MovieStore1 = _MovieStore with _$MovieStore1;
 
 abstract class _MovieStore with Store {
-
   NetworkService1 httpClient = NetworkService1();
 
   @observable
@@ -27,6 +25,7 @@ abstract class _MovieStore with Store {
 
   @action
   Future fetchMovie() async {
+    
     isDataFetched = true;
     var res = await httpClient.getMovies(int.parse(page.toString()));
     if (res != null) {
@@ -37,11 +36,16 @@ abstract class _MovieStore with Store {
       return;
     }
     isDataFetched = false;
+    
   }
 
   @action
   Future fetchTheMovie() async {
-    var res = await httpClient.getMovies(int.parse(page.toString()));
+    var res = await httpClient.getMovies(
+      int.parse(
+        page.toString(),
+      ),
+    );
     if (res != null) {
       movies.addAll(res);
       page++;

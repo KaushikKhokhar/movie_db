@@ -1,11 +1,16 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:movie_db/color/color.dart';
 import 'package:movie_db/widget/now_playing_detail_screen.dart';
 import 'package:movie_db/store/movie_store1.dart';
+import 'package:overlay_support/overlay_support.dart';
 
-// ignore: must_be_immutable
 class NowPlaying extends StatefulWidget {
+  const NowPlaying({Key? key}) : super(key: key);
+
   @override
   State<NowPlaying> createState() => _NowPlayingState();
 }
@@ -13,9 +18,8 @@ class NowPlaying extends StatefulWidget {
 class _NowPlayingState extends State<NowPlaying> {
   MovieStore1 store = MovieStore1();
 
-  // var _isLoading = false;
-
-  bool isLoadingImage = true;
+  bool hasInternet = false;
+  bool loadingMovie = true;
 
   final ScrollController _scrollController = ScrollController();
 
@@ -31,7 +35,19 @@ class _NowPlayingState extends State<NowPlaying> {
     });
   }
 
-  Future _refresh() => store.fetchTheMovie();
+  Future _refresh() async {
+    hasInternet = await InternetConnectionChecker().hasConnection;
+    final color = hasInternet ? Colors.green : Colors.red;
+    final text =
+        hasInternet ? 'Refresh Successfully' : 'Please check your network';
+    showSimpleNotification(
+        Text(
+          text,
+          style: const TextStyle(fontSize: 18, color: Colors.white),
+        ),
+        background: color);
+    return store.fetchTheMovie();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +79,7 @@ class _NowPlayingState extends State<NowPlaying> {
                       itemBuilder: (context, index) {
                         final movie = future[index];
                         var imageUrl =
-                            'https://image.tmdb.org/t/p/w500${movie.image}';
+                            'https://image.tmdb.org/t/p/w500${movie.backdrop_path}';
                         return Container(
                           decoration: const BoxDecoration(
                               borderRadius:
@@ -74,7 +90,7 @@ class _NowPlayingState extends State<NowPlaying> {
                                 flex: 6,
                                 child: InkWell(
                                   onTap: () {
-                                    print(movie.image);
+                                    print(movie.backdrop_path);
                                     Navigator.of(context).pushNamed(
                                       NowPlayingDetailScreen.routeName,
                                       arguments: movie,
@@ -85,9 +101,6 @@ class _NowPlayingState extends State<NowPlaying> {
                                       border: Border.all(
                                           width: 2,
                                           color: AppColors.secondaryColor),
-                                      // borderRadius: BorderRadius.all(
-                                      //   Radius.circular(12),
-                                      // ),
                                     ),
                                     child: FadeInImage(
                                       placeholder: const AssetImage(
@@ -106,7 +119,7 @@ class _NowPlayingState extends State<NowPlaying> {
                               Expanded(
                                 flex: 1,
                                 child: Text(
-                                  movie.title,
+                                  movie.title.toString(),
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
@@ -126,7 +139,7 @@ class _NowPlayingState extends State<NowPlaying> {
                                     width: 4,
                                   ),
                                   Text(
-                                    movie.rate.toString(),
+                                    movie.vote_average.toString(),
                                     style: const TextStyle(
                                         color: AppColors.secondaryColor),
                                   ),
