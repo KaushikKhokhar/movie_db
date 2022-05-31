@@ -38,8 +38,10 @@ dependencies:
   flutter_mobx: 
   http: ^0.13.4
   flutter_rating_bar: ^4.0.1
-  pagination_view: ^2.0.0
   pull_to_refresh: ^2.0.0
+  internet_connection_checker: 0.0.1+1
+  overlay_support: ^2.0.0
+  json_annotation: ^4.5.0
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +55,7 @@ dev_dependencies:
   flutter_lints: ^1.0.0
   build_runner: 
   mobx_codegen: 
+  json_serializable: ^6.2.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

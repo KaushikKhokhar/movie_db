@@ -1,6 +1,6 @@
 import 'package:mobx/mobx.dart';
-import 'package:movie_db/api_class4.dart';
-import 'package:movie_db/network_services4.dart';
+import 'package:movie_db/api_classes/api_class4.dart';
+import 'package:movie_db/network_services/network_services4.dart';
 
 part 'movie_store4.g.dart';
 

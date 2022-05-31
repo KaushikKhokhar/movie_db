@@ -1,7 +1,11 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:movie_db/store/movie_store4.dart';
 import 'package:movie_db/widget/upcoming_detail_screen.dart';
+import 'package:overlay_support/overlay_support.dart';
 
 import '../color/color.dart';
 
@@ -16,6 +20,7 @@ class _UpcomingState extends State<Upcoming> {
   MovieStore4 store = MovieStore4();
 
   bool isLoadingImage = true;
+  bool hasInternet = false;
 
   final ScrollController _scrollController = ScrollController();
 
@@ -23,15 +28,29 @@ class _UpcomingState extends State<Upcoming> {
   void initState() {
     super.initState();
     store.fetchMovie();
-    _scrollController.addListener(() {
-      if (_scrollController.position.maxScrollExtent ==
-          _scrollController.offset) {
-        store.fetchMovie();
-      }
-    });
+    _scrollController.addListener(
+      () {
+        if (_scrollController.position.maxScrollExtent ==
+            _scrollController.offset) {
+          store.fetchMovie();
+        }
+      },
+    );
   }
 
-  Future _refresh() => store.fetchTheMovie();
+  Future _refresh() async {
+    hasInternet = await InternetConnectionChecker().hasConnection;
+    final color = hasInternet ? Colors.green : Colors.red;
+    final text =
+        hasInternet ? 'Refresh Successfully' : 'Please check your network';
+    showSimpleNotification(
+        Text(
+          text,
+          style: const TextStyle(fontSize: 18, color: Colors.white),
+        ),
+        background: color);
+    return store.fetchTheMovie();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +82,7 @@ class _UpcomingState extends State<Upcoming> {
                       itemBuilder: (context, index) {
                         final movie = future[index];
                         var imageUrl =
-                            'https://image.tmdb.org/t/p/w500${movie.image}';
+                            'https://image.tmdb.org/t/p/w500${movie.backdrop_path}';
                         return Container(
                           decoration: const BoxDecoration(
                               borderRadius:
@@ -74,7 +93,7 @@ class _UpcomingState extends State<Upcoming> {
                                 flex: 6,
                                 child: InkWell(
                                   onTap: () {
-                                    print(movie.image);
+                                    print(movie.backdrop_path);
                                     Navigator.of(context).pushNamed(
                                       UpcomingDetailScreen.routeName,
                                       arguments: movie,
@@ -85,9 +104,6 @@ class _UpcomingState extends State<Upcoming> {
                                       border: Border.all(
                                           width: 2,
                                           color: AppColors.secondaryColor),
-                                      // borderRadius: BorderRadius.all(
-                                      //   Radius.circular(12),
-                                      // ),
                                     ),
                                     child: FadeInImage(
                                       placeholder: const AssetImage(
@@ -126,7 +142,7 @@ class _UpcomingState extends State<Upcoming> {
                                     width: 4,
                                   ),
                                   Text(
-                                    movie.rate.toString(),
+                                    movie.vote_average.toString(),
                                     style: const TextStyle(
                                         color: AppColors.secondaryColor),
                                   ),

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:movie_db/color/color.dart';
 import 'package:movie_db/screen/now_playing.dart';
@@ -8,6 +10,7 @@ import 'package:movie_db/screen/upcoming.dart';
 import 'package:movie_db/widget/popular_detail_screen.dart';
 import 'package:movie_db/widget/top_rated_detail_screen.dart';
 import 'package:movie_db/widget/upcoming_detail_screen.dart';
+import 'package:overlay_support/overlay_support.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,15 +21,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
-      routes: {
-        NowPlayingDetailScreen.routeName: (context) => const NowPlayingDetailScreen(),
-        PopularDetailScreen.routeName: (context) => const PopularDetailScreen(),
-        TopRatedDetailScreen.routeName:(context) => const TopRatedDetailScreen(),
-        UpcomingDetailScreen.routeName:(context) => const UpcomingDetailScreen(),
-      },
+    return OverlaySupport.global(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: const HomeScreen(),
+        routes: {
+          NowPlayingDetailScreen.routeName: (context) =>
+              const NowPlayingDetailScreen(),
+          PopularDetailScreen.routeName: (context) =>
+              const PopularDetailScreen(),
+          TopRatedDetailScreen.routeName: (context) =>
+              const TopRatedDetailScreen(),
+          UpcomingDetailScreen.routeName: (context) =>
+              const UpcomingDetailScreen(),
+        },
+      ),
     );
   }
 }
@@ -77,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen>
       body: TabBarView(
         controller: _tabController,
         children: [
-          NowPlaying(),
+          const NowPlaying(),
           const Popular(),
           const TopRated(),
           const Upcoming(),

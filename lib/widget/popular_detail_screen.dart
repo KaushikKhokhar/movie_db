@@ -1,7 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movie_db/store/movie_store2.dart';
-
 import '../color/color.dart';
 
 class PopularDetailScreen extends StatefulWidget {
@@ -42,18 +43,19 @@ class _PopularDetailScreenState extends State<PopularDetailScreen> {
 
     void rateDeleteShowDialog(BuildContext context) {
       showDialog(
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-                title: const Text('Your rate has been deleted'),
-                content: const Text('Your rate deleted successfully!'),
-                actions: [
-                  TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: const Text('Okay'))
-                ],
-              ));
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('Your rate has been deleted'),
+          content: const Text('Your rate deleted successfully!'),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text('Okay'))
+          ],
+        ),
+      );
     }
 
     void rateCount() {
@@ -87,9 +89,6 @@ class _PopularDetailScreenState extends State<PopularDetailScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Text('$_rating',
-                    //     style:
-                    //         const TextStyle(color: Colors.amber, fontSize: 18)),
                     RatingBar.builder(
                       updateOnDrag: true,
                       direction: Axis.horizontal,
@@ -102,11 +101,12 @@ class _PopularDetailScreenState extends State<PopularDetailScreen> {
                             color: Colors.amber,
                           )),
                       onRatingUpdate: (rating) {
-                        // ignore: avoid_print
                         print(rating);
-                        setState(() {
-                          _rating = rating;
-                        });
+                        setState(
+                          () {
+                            _rating = rating;
+                          },
+                        );
                       },
                     ),
                   ],
@@ -145,9 +145,6 @@ class _PopularDetailScreenState extends State<PopularDetailScreen> {
                         store.postTheRate(_rating, allMovies.id);
                         Navigator.of(context).pop();
                         ratingShowDialog(context);
-                        // rateAndDeleteShowDialog(context, 'Thanks for rating',
-                        //     'Your valuable rating to helps others people to watch more this movie.');
-                        // showRatedDialog();
                       },
                       child: Container(
                         height: 40,
@@ -310,19 +307,12 @@ class _PopularDetailScreenState extends State<PopularDetailScreen> {
                   child: FadeInImage(
                     placeholder: const AssetImage('assets/loading_image.png'),
                     image: NetworkImage(
-                      'https://image.tmdb.org/t/p/w500${allMovies.image}',
+                      'https://image.tmdb.org/t/p/w500${allMovies.backdrop_path}',
                     ),
                     width: 325,
                     height: 250,
                     fit: BoxFit.fill,
                   ),
-
-                  // Image.network(
-                  //   'https://image.tmdb.org/t/p/w500${allMovies.image}',
-                  //   width: 250,
-                  //   height: 250,
-                  //   fit: BoxFit.fill,
-                  // ),
                 ),
               ),
               const SizedBox(
@@ -345,9 +335,9 @@ class _PopularDetailScreenState extends State<PopularDetailScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "${allMovies.language}"
+                        "${allMovies.original_language}"
                         "  |  "
-                        "${allMovies.releaseDate}"
+                        "${allMovies.release_date}"
                         "  |  "
                         "${allMovies.popularity}",
                         style: const TextStyle(
@@ -364,7 +354,7 @@ class _PopularDetailScreenState extends State<PopularDetailScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        allMovies.rate.toString(),
+                        allMovies.vote_average.toString(),
                         style:
                             const TextStyle(color: Colors.amber, fontSize: 18),
                       ),
@@ -389,20 +379,10 @@ class _PopularDetailScreenState extends State<PopularDetailScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  // const Text(
-                  //   'About this movie',
-                  //   textAlign: TextAlign.start,
-                  //   style: TextStyle(
-                  //       color: AppColors.secondaryColor,
-                  //       fontWeight: FontWeight.bold),
-                  // ),
-                  // const SizedBox(
-                  //   height: 16,
-                  // ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Text(
-                      allMovies.description,
+                      allMovies.overview,
                       textAlign: TextAlign.justify,
                       style: const TextStyle(
                           fontSize: 16, color: AppColors.secondaryColor),

@@ -1,7 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movie_db/color/color.dart';
-
 import '../store/movie_store1.dart';
 
 class NowPlayingDetailScreen extends StatefulWidget {
@@ -42,18 +43,19 @@ class _NowPlayingDetailScreenState extends State<NowPlayingDetailScreen> {
 
     void rateDeleteShowDialog(BuildContext context) {
       showDialog(
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-                title: const Text('Your rate has been deleted'),
-                content: const Text('Your rate deleted successfully!'),
-                actions: [
-                  TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: const Text('Okay'))
-                ],
-              ));
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('Your rate has been deleted'),
+          content: const Text('Your rate deleted successfully!'),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text('Okay'))
+          ],
+        ),
+      );
     }
 
     void rateCount() {
@@ -87,9 +89,6 @@ class _NowPlayingDetailScreenState extends State<NowPlayingDetailScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Text('$_rating',
-                    //     style:
-                    //         const TextStyle(color: Colors.amber, fontSize: 18)),
                     RatingBar.builder(
                       updateOnDrag: true,
                       direction: Axis.horizontal,
@@ -102,11 +101,12 @@ class _NowPlayingDetailScreenState extends State<NowPlayingDetailScreen> {
                             color: Colors.amber,
                           )),
                       onRatingUpdate: (rating) {
-                        // ignore: avoid_print
                         print(rating);
-                        setState(() {
-                          _rating = rating;
-                        });
+                        setState(
+                          () {
+                            _rating = rating;
+                          },
+                        );
                       },
                     ),
                   ],
@@ -145,9 +145,6 @@ class _NowPlayingDetailScreenState extends State<NowPlayingDetailScreen> {
                         store.postTheRate(_rating, allMovies.id);
                         Navigator.of(context).pop();
                         ratingShowDialog(context);
-                        // rateAndDeleteShowDialog(context, 'Thanks for rating',
-                        //     'Your valuable rating to helps others people to watch more this movie.');
-                        // showRatedDialog();
                       },
                       child: Container(
                         height: 40,
@@ -178,78 +175,85 @@ class _NowPlayingDetailScreenState extends State<NowPlayingDetailScreen> {
         context: context,
         builder: (_) {
           return Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-            height: 165,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+            height: 200,
             width: double.infinity,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30), topRight: Radius.circular(30)),
             ),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 16,
-                ),
-                const Text(
-                  'Do you want to delete your rating ?',
-                  textAlign: TextAlign.justify,
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 16,
                   ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Container(
-                        height: 40,
-                        width: 110,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(7),
-                            color: Colors.grey[300]),
-                        child: const Center(
-                          child: Text(
-                            'No',
-                            style: TextStyle(
-                              fontSize: 20,
+                  const Text(
+                    'Do you want to delete your rating ?',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 110,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7),
+                              color: Colors.grey[300]),
+                          child: const Center(
+                            child: Text(
+                              'No',
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 25,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        store.deleteTheRate(allMovies.id);
-                        Navigator.of(context).pop();
-                        rateDeleteShowDialog(context);
-                      },
-                      child: Container(
-                        height: 40,
-                        width: 110,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: Colors.blue),
-                        child: const Center(
-                          child: Text(
-                            'Yes',
-                            style: TextStyle(fontSize: 20, color: Colors.white),
+                      const SizedBox(
+                        width: 25,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          store.deleteTheRate(allMovies.id);
+                          Navigator.of(context).pop();
+                          rateDeleteShowDialog(context);
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 110,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.blue),
+                          child: const Center(
+                            child: Text(
+                              'Yes',
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.white),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                ],
+              ),
             ),
           );
         },
@@ -303,19 +307,12 @@ class _NowPlayingDetailScreenState extends State<NowPlayingDetailScreen> {
                   child: FadeInImage(
                     placeholder: const AssetImage('assets/loading_image.png'),
                     image: NetworkImage(
-                      'https://image.tmdb.org/t/p/w500${allMovies.image}',
+                      'https://image.tmdb.org/t/p/w500${allMovies.backdrop_path}',
                     ),
                     width: 325,
                     height: 250,
                     fit: BoxFit.fill,
                   ),
-
-                  // Image.network(
-                  //   'https://image.tmdb.org/t/p/w500${allMovies.image}',
-                  //   width: 250,
-                  //   height: 250,
-                  //   fit: BoxFit.fill,
-                  // ),
                 ),
               ),
               const SizedBox(
@@ -338,9 +335,9 @@ class _NowPlayingDetailScreenState extends State<NowPlayingDetailScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "${allMovies.language}"
+                        "${allMovies.original_language}"
                         "  |  "
-                        "${allMovies.releaseDate}"
+                        "${allMovies.release_date}"
                         "  |  "
                         "${allMovies.popularity}",
                         style: const TextStyle(
@@ -357,7 +354,7 @@ class _NowPlayingDetailScreenState extends State<NowPlayingDetailScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        allMovies.rate.toString(),
+                        allMovies.vote_average.toString(),
                         style:
                             const TextStyle(color: Colors.amber, fontSize: 18),
                       ),
@@ -382,20 +379,10 @@ class _NowPlayingDetailScreenState extends State<NowPlayingDetailScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  // const Text(
-                  //   'About this movie',
-                  //   textAlign: TextAlign.start,
-                  //   style: TextStyle(
-                  //       color: AppColors.secondaryColor,
-                  //       fontWeight: FontWeight.bold),
-                  // ),
-                  // const SizedBox(
-                  //   height: 16,
-                  // ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Text(
-                      allMovies.description,
+                      allMovies.overview,
                       textAlign: TextAlign.justify,
                       style: const TextStyle(
                           fontSize: 16, color: AppColors.secondaryColor),
