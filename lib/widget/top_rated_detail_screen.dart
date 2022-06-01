@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../color/color.dart';
-import '../store/movie_store3.dart';
+import '../store/top_rated_store.dart';
 
 class TopRatedDetailScreen extends StatefulWidget {
   const TopRatedDetailScreen({Key? key}) : super(key: key);

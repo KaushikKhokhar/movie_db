@@ -4,10 +4,11 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:movie_db/all_url.dart';
-import 'package:movie_db/api_classes/api_class3.dart';
+import '../model/top_rated.dart';
 
-class NetworkServices3 {
-  List<Movie3> movies = [];
+
+class TopRatedHttpMethod {
+  List<TopRatedModelClass> movies = [];
 
   Future getMovies(int page) async {
     final response = await http.get(
@@ -18,7 +19,7 @@ class NetworkServices3 {
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
       movies = (result['results'] as List).map((json) {
-        return Movie3.formJson(json);
+        return TopRatedModelClass.formJson(json);
       }).toList();
       print('Response is successful for top rated screen');
       return movies;

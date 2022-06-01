@@ -3,10 +3,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:movie_db/all_url.dart';
-import 'package:movie_db/api_classes/api_class4.dart';
+import '../model/upcoming.dart';
 
-class NetworkServices4 {
-  List<Movie4> movies = [];
+class UpcomingHttpMethod {
+  List<UpcomingModelClass> movies = [];
 
   Future getMovies(int page) async {
     final response = await http.get(
@@ -17,7 +17,7 @@ class NetworkServices4 {
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
       movies = (result['results'] as List).map((json) {
-        return Movie4.fromJson(json);
+        return UpcomingModelClass.fromJson(json);
       }).toList();
       print('Response is successful for upcoming screen');
       return movies;

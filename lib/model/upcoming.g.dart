@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'api_class3.dart';
+part of 'upcoming.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Movie3 _$Movie3FromJson(Map<String, dynamic> json) => Movie3(
+UpcomingModelClass _$UpcomingModelClassFromJson(Map<String, dynamic> json) =>
+    UpcomingModelClass(
       id: json['id'] as int,
       title: json['title'] as String,
       backdrop_path: json['backdrop_path'] as String,
@@ -17,7 +18,8 @@ Movie3 _$Movie3FromJson(Map<String, dynamic> json) => Movie3(
       popularity: json['popularity'] as num,
     );
 
-Map<String, dynamic> _$Movie3ToJson(Movie3 instance) => <String, dynamic>{
+Map<String, dynamic> _$UpcomingModelClassToJson(UpcomingModelClass instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
       'backdrop_path': instance.backdrop_path,

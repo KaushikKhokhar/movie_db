@@ -5,7 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:movie_db/color/color.dart';
 import 'package:movie_db/widget/now_playing_detail_screen.dart';
-import 'package:movie_db/store/movie_store1.dart';
+import 'package:movie_db/store/now_playing_store.dart';
 import 'package:overlay_support/overlay_support.dart';
 
 class NowPlaying extends StatefulWidget {

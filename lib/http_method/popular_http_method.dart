@@ -1,14 +1,14 @@
 // ignore_for_file: avoid_print
 
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:movie_db/all_url.dart';
-import 'package:movie_db/api_classes/api_class2.dart';
+import '../model/popular.dart';
 
-class NetworkServices2 {
-  List<Movie2> movies = [];
+
+class PopularHttpMethod {
+  List<PopularModelClass> movies = [];
 
   Future getMovies(int page) async {
     final response = await http.get(
@@ -17,7 +17,7 @@ class NetworkServices2 {
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
       movies = (result['results'] as List).map((json) {
-        return Movie2.fromJson(json);
+        return PopularModelClass.fromJson(json);
       }).toList();
       print('response successful for popular screen');
       return movies;

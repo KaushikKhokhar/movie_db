@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'movie_store1.dart';
+part of 'popular_store.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,25 +8,25 @@ part of 'movie_store1.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$MovieStore1 on _MovieStore, Store {
-  late final _$isDataFetchedAtom =
-      Atom(name: '_MovieStore.isDataFetched', context: context);
+mixin _$MovieStore2 on _MovieStroe, Store {
+  late final _$isDataFatchedAtom =
+      Atom(name: '_MovieStroe.isDataFatched', context: context);
 
   @override
-  bool get isDataFetched {
-    _$isDataFetchedAtom.reportRead();
-    return super.isDataFetched;
+  bool get isDataFatched {
+    _$isDataFatchedAtom.reportRead();
+    return super.isDataFatched;
   }
 
   @override
-  set isDataFetched(bool value) {
-    _$isDataFetchedAtom.reportWrite(value, super.isDataFetched, () {
-      super.isDataFetched = value;
+  set isDataFatched(bool value) {
+    _$isDataFatchedAtom.reportWrite(value, super.isDataFatched, () {
+      super.isDataFatched = value;
     });
   }
 
   late final _$rateListFutureAtom =
-      Atom(name: '_MovieStore.rateListFuture', context: context);
+      Atom(name: '_MovieStroe.rateListFuture', context: context);
 
   @override
   ObservableFuture<dynamic>? get rateListFuture {
@@ -42,7 +42,7 @@ mixin _$MovieStore1 on _MovieStore, Store {
   }
 
   late final _$deleteRateFutureAtom =
-      Atom(name: '_MovieStore.deleteRateFuture', context: context);
+      Atom(name: '_MovieStroe.deleteRateFuture', context: context);
 
   @override
   ObservableFuture<dynamic>? get deleteRateFuture {
@@ -57,7 +57,7 @@ mixin _$MovieStore1 on _MovieStore, Store {
     });
   }
 
-  late final _$pageAtom = Atom(name: '_MovieStore.page', context: context);
+  late final _$pageAtom = Atom(name: '_MovieStroe.page', context: context);
 
   @override
   int get page {
@@ -73,7 +73,7 @@ mixin _$MovieStore1 on _MovieStore, Store {
   }
 
   late final _$fetchMovieAsyncAction =
-      AsyncAction('_MovieStore.fetchMovie', context: context);
+      AsyncAction('_MovieStroe.fetchMovie', context: context);
 
   @override
   Future<dynamic> fetchMovie() {
@@ -81,42 +81,42 @@ mixin _$MovieStore1 on _MovieStore, Store {
   }
 
   late final _$fetchTheMovieAsyncAction =
-      AsyncAction('_MovieStore.fetchTheMovie', context: context);
+      AsyncAction('_MovieStroe.fetchTheMovie', context: context);
 
   @override
   Future<dynamic> fetchTheMovie() {
     return _$fetchTheMovieAsyncAction.run(() => super.fetchTheMovie());
   }
 
-  late final _$_MovieStoreActionController =
-      ActionController(name: '_MovieStore', context: context);
+  late final _$_MovieStroeActionController =
+      ActionController(name: '_MovieStroe', context: context);
 
   @override
   Future<dynamic> submitRate(double rating, int id) {
-    final _$actionInfo = _$_MovieStoreActionController.startAction(
-        name: '_MovieStore.submitRate');
+    final _$actionInfo = _$_MovieStroeActionController.startAction(
+        name: '_MovieStroe.submitRate');
     try {
       return super.submitRate(rating, id);
     } finally {
-      _$_MovieStoreActionController.endAction(_$actionInfo);
+      _$_MovieStroeActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   Future<dynamic> delRate(int id) {
     final _$actionInfo =
-        _$_MovieStoreActionController.startAction(name: '_MovieStore.delRate');
+        _$_MovieStroeActionController.startAction(name: '_MovieStroe.delRate');
     try {
       return super.delRate(id);
     } finally {
-      _$_MovieStoreActionController.endAction(_$actionInfo);
+      _$_MovieStroeActionController.endAction(_$actionInfo);
     }
   }
 
   @override
   String toString() {
     return '''
-isDataFetched: ${isDataFetched},
+isDataFatched: ${isDataFatched},
 rateListFuture: ${rateListFuture},
 deleteRateFuture: ${deleteRateFuture},
 page: ${page}

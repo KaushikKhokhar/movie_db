@@ -1,13 +1,15 @@
 import 'package:mobx/mobx.dart';
-import 'package:movie_db/api_classes/api_class2.dart';
-import 'package:movie_db/network_services/network_services2.dart';
+import 'package:movie_db/model/top_rated.dart';
 
-part 'movie_store2.g.dart';
+import '../http_method/top_rated_http_method.dart';
 
-class MovieStore2 = _MovieStroe with _$MovieStore2;
 
-abstract class _MovieStroe with Store {
-  NetworkServices2 httpClient = NetworkServices2();
+part 'top_rated_store.g.dart';
+
+class MovieStore3 = _MovieStore with _$MovieStore3;
+
+abstract class _MovieStore with Store {
+  TopRatedHttpMethod httpClient = TopRatedHttpMethod();
 
   @observable
   bool isDataFatched = false;
@@ -21,7 +23,7 @@ abstract class _MovieStroe with Store {
   @observable
   int page = 1;
 
-  ObservableList<Movie2> movies = ObservableList<Movie2>();
+  ObservableList<TopRatedModelClass> movies = ObservableList<TopRatedModelClass>();
 
   @action
   Future fetchMovie() async {
@@ -61,5 +63,4 @@ abstract class _MovieStroe with Store {
   void deleteTheRate(int id) {
     delRate(id);
   }
-
 }

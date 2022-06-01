@@ -1,11 +1,11 @@
-// ignore_for_file: file_names, non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names
 
 import 'package:json_annotation/json_annotation.dart';
 
-part 'api_class1.g.dart';
+part 'top_rated.g.dart';
 
 @JsonSerializable()
-class Movie1 {
+class TopRatedModelClass {
   int id;
   String title;
   String backdrop_path;
@@ -15,7 +15,7 @@ class Movie1 {
   String release_date;
   num popularity;
 
-  Movie1({
+  TopRatedModelClass({
     required this.id,
     required this.title,
     required this.backdrop_path,
@@ -26,7 +26,7 @@ class Movie1 {
     required this.popularity,
   });
 
-  factory Movie1.fromJson(Map<String, dynamic> data) => _$Movie1FromJson(data);
+  factory TopRatedModelClass.formJson(Map<String, dynamic> data) => _$TopRatedModelClassFromJson(data);
 
-  Map<String, dynamic> toJson() => _$Movie1ToJson(this);
+  Map<String, dynamic> toJson() => _$TopRatedModelClassToJson(this);
 }

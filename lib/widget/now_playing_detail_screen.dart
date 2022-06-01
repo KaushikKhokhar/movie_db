@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movie_db/color/color.dart';
-import '../store/movie_store1.dart';
+import '../store/now_playing_store.dart';
 
 class NowPlayingDetailScreen extends StatefulWidget {
   static const routeName = '/now-playing-detail-screen';

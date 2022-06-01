@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:movie_db/store/movie_store4.dart';
+import 'package:movie_db/store/upcoming_store.dart';
 import '../color/color.dart';
 
 class UpcomingDetailScreen extends StatefulWidget {
