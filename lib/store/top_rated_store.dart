@@ -1,15 +1,13 @@
 import 'package:mobx/mobx.dart';
-import 'package:movie_db/model/top_rated.dart';
-
-import '../http_method/top_rated_http_method.dart';
-
+import 'package:movie_db/api/top_rated_api.dart';
+import 'package:movie_db/model/top_rated_model.dart';
 
 part 'top_rated_store.g.dart';
 
 class MovieStore3 = _MovieStore with _$MovieStore3;
 
 abstract class _MovieStore with Store {
-  TopRatedHttpMethod httpClient = TopRatedHttpMethod();
+  TopRatedApi httpClient = TopRatedApi();
 
   @observable
   bool isDataFatched = false;
@@ -23,7 +21,7 @@ abstract class _MovieStore with Store {
   @observable
   int page = 1;
 
-  ObservableList<TopRatedModelClass> movies = ObservableList<TopRatedModelClass>();
+  ObservableList<TopRatedModel> movies = ObservableList<TopRatedModel>();
 
   @action
   Future fetchMovie() async {

@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'top_rated.dart';
+part of 'top_rated_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-TopRatedModelClass _$TopRatedModelClassFromJson(Map<String, dynamic> json) =>
-    TopRatedModelClass(
+TopRatedModel _$TopRatedModelFromJson(Map<String, dynamic> json) =>
+    TopRatedModel(
       id: json['id'] as int,
       title: json['title'] as String,
       backdrop_path: json['backdrop_path'] as String,
@@ -18,7 +18,7 @@ TopRatedModelClass _$TopRatedModelClassFromJson(Map<String, dynamic> json) =>
       popularity: json['popularity'] as num,
     );
 
-Map<String, dynamic> _$TopRatedModelClassToJson(TopRatedModelClass instance) =>
+Map<String, dynamic> _$TopRatedModelToJson(TopRatedModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,

@@ -1,13 +1,13 @@
 import 'package:mobx/mobx.dart';
-import '../http_method/upcoming_http_method.dart';
-import '../model/upcoming.dart';
+import 'package:movie_db/api/upcoming_api.dart';
+import '../model/upcoming_model.dart';
 
 part 'upcoming_store.g.dart';
 
 class MovieStore4 = _MovieStore with _$MovieStore4;
 
 abstract class _MovieStore with Store {
-  UpcomingHttpMethod httpClient = UpcomingHttpMethod();
+  UpcomingApi httpClient = UpcomingApi();
 
   @observable
   bool isDataFatched = false;
@@ -21,7 +21,7 @@ abstract class _MovieStore with Store {
   @observable
   int page = 1;
 
-  ObservableList<UpcomingModelClass> movies = ObservableList<UpcomingModelClass>();
+  ObservableList<UpcomingModel> movies = ObservableList<UpcomingModel>();
 
   @action
   Future fetchMovie() async {

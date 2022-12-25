@@ -1,13 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'popular.dart';
+part of 'popular_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-PopularModelClass _$PopularModelClassFromJson(Map<String, dynamic> json) =>
-    PopularModelClass(
+PopularModel _$PopularModelFromJson(Map<String, dynamic> json) => PopularModel(
       id: json['id'] as int,
       title: json['title'] as String,
       backdrop_path: json['backdrop_path'] as String,
@@ -18,7 +17,7 @@ PopularModelClass _$PopularModelClassFromJson(Map<String, dynamic> json) =>
       popularity: json['popularity'] as num,
     );
 
-Map<String, dynamic> _$PopularModelClassToJson(PopularModelClass instance) =>
+Map<String, dynamic> _$PopularModelToJson(PopularModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,

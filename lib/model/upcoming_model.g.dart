@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'upcoming.dart';
+part of 'upcoming_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-UpcomingModelClass _$UpcomingModelClassFromJson(Map<String, dynamic> json) =>
-    UpcomingModelClass(
+UpcomingModel _$UpcomingModelFromJson(Map<String, dynamic> json) =>
+    UpcomingModel(
       id: json['id'] as int,
       title: json['title'] as String,
       backdrop_path: json['backdrop_path'] as String,
@@ -18,7 +18,7 @@ UpcomingModelClass _$UpcomingModelClassFromJson(Map<String, dynamic> json) =>
       popularity: json['popularity'] as num,
     );
 
-Map<String, dynamic> _$UpcomingModelClassToJson(UpcomingModelClass instance) =>
+Map<String, dynamic> _$UpcomingModelToJson(UpcomingModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,

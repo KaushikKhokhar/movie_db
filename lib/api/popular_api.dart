@@ -4,24 +4,21 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:movie_db/all_url.dart';
-import '../model/top_rated.dart';
+import '../model/popular_model.dart';
 
-
-class TopRatedHttpMethod {
-  List<TopRatedModelClass> movies = [];
+class PopularApi {
+  List<PopularModel> movies = [];
 
   Future getMovies(int page) async {
     final response = await http.get(
-      Uri.parse(
-        '${AllUrl.fetchMovieForTopRated}$page',
-      ),
+      Uri.parse('${AllUrl.fetchMovieForPopular}$page'),
     );
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
       movies = (result['results'] as List).map((json) {
-        return TopRatedModelClass.formJson(json);
+        return PopularModel.fromJson(json);
       }).toList();
-      print('Response is successful for top rated screen');
+      print('response successful for popular screen');
       return movies;
     } else {
       print('Error in url');
@@ -30,6 +27,7 @@ class TopRatedHttpMethod {
 
   Future postRate(double rating, int id) async {
     Response response;
+
     try {
       response = await http.post(
         Uri.parse(

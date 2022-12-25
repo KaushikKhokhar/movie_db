@@ -2,10 +2,10 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-part 'top_rated.g.dart';
+part 'top_rated_model.g.dart';
 
 @JsonSerializable()
-class TopRatedModelClass {
+class TopRatedModel {
   int id;
   String title;
   String backdrop_path;
@@ -15,7 +15,7 @@ class TopRatedModelClass {
   String release_date;
   num popularity;
 
-  TopRatedModelClass({
+  TopRatedModel({
     required this.id,
     required this.title,
     required this.backdrop_path,
@@ -26,7 +26,8 @@ class TopRatedModelClass {
     required this.popularity,
   });
 
-  factory TopRatedModelClass.formJson(Map<String, dynamic> data) => _$TopRatedModelClassFromJson(data);
+  factory TopRatedModel.formJson(Map<String, dynamic> data) =>
+      _$TopRatedModelFromJson(data);
 
-  Map<String, dynamic> toJson() => _$TopRatedModelClassToJson(this);
+  Map<String, dynamic> toJson() => _$TopRatedModelToJson(this);
 }

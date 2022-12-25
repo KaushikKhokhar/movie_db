@@ -3,9 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:movie_db/color/color.dart';
-import 'package:movie_db/widget/now_playing_detail_screen.dart';
+import 'package:movie_db/color/app_colors.dart';
 import 'package:movie_db/store/now_playing_store.dart';
+import 'package:movie_db/widget/now_playing_details_screen.dart';
 import 'package:overlay_support/overlay_support.dart';
 
 class NowPlaying extends StatefulWidget {
@@ -92,7 +92,7 @@ class _NowPlayingState extends State<NowPlaying> {
                                   onTap: () {
                                     print(movie.backdrop_path);
                                     Navigator.of(context).pushNamed(
-                                      NowPlayingDetailScreen.routeName,
+                                      NowPlayingDetailsScreen.routeName,
                                       arguments: movie,
                                     );
                                   },

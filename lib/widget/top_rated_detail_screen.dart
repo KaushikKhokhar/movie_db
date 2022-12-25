@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import '../color/color.dart';
+import '../color/app_colors.dart';
 import '../store/top_rated_store.dart';
 
 class TopRatedDetailScreen extends StatefulWidget {

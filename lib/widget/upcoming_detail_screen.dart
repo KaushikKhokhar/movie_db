@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movie_db/store/upcoming_store.dart';
-import '../color/color.dart';
+import '../color/app_colors.dart';
 
 class UpcomingDetailScreen extends StatefulWidget {
   const UpcomingDetailScreen({Key? key}) : super(key: key);
