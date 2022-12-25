@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'api_class2.dart';
+part of 'top_rated.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Movie2 _$Movie2FromJson(Map<String, dynamic> json) => Movie2(
+TopRatedModelClass _$TopRatedModelClassFromJson(Map<String, dynamic> json) =>
+    TopRatedModelClass(
       id: json['id'] as int,
       title: json['title'] as String,
       backdrop_path: json['backdrop_path'] as String,
@@ -17,7 +18,8 @@ Movie2 _$Movie2FromJson(Map<String, dynamic> json) => Movie2(
       popularity: json['popularity'] as num,
     );
 
-Map<String, dynamic> _$Movie2ToJson(Movie2 instance) => <String, dynamic>{
+Map<String, dynamic> _$TopRatedModelClassToJson(TopRatedModelClass instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
       'backdrop_path': instance.backdrop_path,

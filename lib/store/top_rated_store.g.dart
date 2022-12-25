@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'movie_store3.dart';
+part of 'top_rated_store.dart';
 
 // **************************************************************************
 // StoreGenerator

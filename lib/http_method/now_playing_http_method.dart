@@ -3,11 +3,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:movie_db/all_url.dart';
-import 'package:movie_db/api_classes/api_class1.dart';
-import '../api_classes/api_class1.dart';
+import '../model/now_playing.dart';
 
-class NetworkService1 {
-  List<Movie1> movies = [];
+class NowPlayingHttpMethod {
+  List<NowPlayingModelClass> movies = [];
 
   Future getMovies(int page) async {
     final response = await http.get(
@@ -16,7 +15,7 @@ class NetworkService1 {
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
       movies = (result['results'] as List).map((json) {
-        return Movie1.fromJson(json);
+        return NowPlayingModelClass.fromJson(json);
       }).toList();
       print('response successful for now playing screen');
       return movies;

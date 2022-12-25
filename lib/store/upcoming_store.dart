@@ -1,16 +1,16 @@
 import 'package:mobx/mobx.dart';
-import 'package:movie_db/api_classes/api_class1.dart';
-import '../network_services/network_services1.dart';
+import '../http_method/upcoming_http_method.dart';
+import '../model/upcoming.dart';
 
-part 'movie_store1.g.dart';
+part 'upcoming_store.g.dart';
 
-class MovieStore1 = _MovieStore with _$MovieStore1;
+class MovieStore4 = _MovieStore with _$MovieStore4;
 
 abstract class _MovieStore with Store {
-  NetworkService1 httpClient = NetworkService1();
+  UpcomingHttpMethod httpClient = UpcomingHttpMethod();
 
   @observable
-  bool isDataFetched = false;
+  bool isDataFatched = false;
 
   @observable
   ObservableFuture? rateListFuture;
@@ -21,12 +21,11 @@ abstract class _MovieStore with Store {
   @observable
   int page = 1;
 
-  ObservableList<Movie1> movies = ObservableList<Movie1>();
+  ObservableList<UpcomingModelClass> movies = ObservableList<UpcomingModelClass>();
 
   @action
   Future fetchMovie() async {
-    
-    isDataFetched = true;
+    isDataFatched = true;
     var res = await httpClient.getMovies(int.parse(page.toString()));
     if (res != null) {
       movies.addAll(res);
@@ -35,17 +34,12 @@ abstract class _MovieStore with Store {
     if (res == null) {
       return;
     }
-    isDataFetched = false;
-    
+    isDataFatched = false;
   }
 
   @action
   Future fetchTheMovie() async {
-    var res = await httpClient.getMovies(
-      int.parse(
-        page.toString(),
-      ),
-    );
+    var res = await httpClient.getMovies(int.parse(page.toString()));
     if (res != null) {
       movies.addAll(res);
       page++;

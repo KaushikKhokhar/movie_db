@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:movie_db/store/movie_store3.dart';
+import 'package:movie_db/store/top_rated_store.dart';
 import 'package:movie_db/widget/top_rated_detail_screen.dart';
 import 'package:overlay_support/overlay_support.dart';
 

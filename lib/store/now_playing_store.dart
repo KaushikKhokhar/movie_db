@@ -1,16 +1,16 @@
 import 'package:mobx/mobx.dart';
-import 'package:movie_db/api_classes/api_class4.dart';
-import 'package:movie_db/network_services/network_services4.dart';
+import '../http_method/now_playing_http_method.dart';
+import '../model/now_playing.dart';
 
-part 'movie_store4.g.dart';
+part 'now_playing_store.g.dart';
 
-class MovieStore4 = _MovieStore with _$MovieStore4;
+class MovieStore1 = _MovieStore with _$MovieStore1;
 
 abstract class _MovieStore with Store {
-  NetworkServices4 httpClient = NetworkServices4();
+  NowPlayingHttpMethod httpClient = NowPlayingHttpMethod();
 
   @observable
-  bool isDataFatched = false;
+  bool isDataFetched = false;
 
   @observable
   ObservableFuture? rateListFuture;
@@ -21,11 +21,12 @@ abstract class _MovieStore with Store {
   @observable
   int page = 1;
 
-  ObservableList<Movie4> movies = ObservableList<Movie4>();
+  ObservableList<NowPlayingModelClass> movies = ObservableList<NowPlayingModelClass>();
 
   @action
   Future fetchMovie() async {
-    isDataFatched = true;
+    
+    isDataFetched = true;
     var res = await httpClient.getMovies(int.parse(page.toString()));
     if (res != null) {
       movies.addAll(res);
@@ -34,12 +35,17 @@ abstract class _MovieStore with Store {
     if (res == null) {
       return;
     }
-    isDataFatched = false;
+    isDataFetched = false;
+    
   }
 
   @action
   Future fetchTheMovie() async {
-    var res = await httpClient.getMovies(int.parse(page.toString()));
+    var res = await httpClient.getMovies(
+      int.parse(
+        page.toString(),
+      ),
+    );
     if (res != null) {
       movies.addAll(res);
       page++;
@@ -48,11 +54,11 @@ abstract class _MovieStore with Store {
 
   @action
   Future submitRate(double rating, int id) => rateListFuture =
-      ObservableFuture(httpClient.postRate(rating, id).then((rate) => rate));
+      ObservableFuture(httpClient.postRate(rating, id));
 
   @action
   Future delRate(int id) => deleteRateFuture = ObservableFuture(
-      httpClient.deleteRate(id).then((deleteRates) => deleteRates));
+      httpClient.deleteRate(id));
 
   void postTheRate(double rating, int id) {
     submitRate(rating, id);

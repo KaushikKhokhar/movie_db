@@ -1,15 +1,16 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'api_class4.dart';
+part of 'popular.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Movie4 _$Movie4FromJson(Map<String, dynamic> json) => Movie4(
+PopularModelClass _$PopularModelClassFromJson(Map<String, dynamic> json) =>
+    PopularModelClass(
       id: json['id'] as int,
       title: json['title'] as String,
-      backdrop_path: json['backdrop_path'].toString(),
+      backdrop_path: json['backdrop_path'] as String,
       overview: json['overview'] as String,
       original_language: json['original_language'] as String,
       vote_average: json['vote_average'] as num,
@@ -17,7 +18,8 @@ Movie4 _$Movie4FromJson(Map<String, dynamic> json) => Movie4(
       popularity: json['popularity'] as num,
     );
 
-Map<String, dynamic> _$Movie4ToJson(Movie4 instance) => <String, dynamic>{
+Map<String, dynamic> _$PopularModelClassToJson(PopularModelClass instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
       'backdrop_path': instance.backdrop_path,

@@ -1,15 +1,17 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'api_class1.dart';
+part of 'now_playing.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Movie1 _$Movie1FromJson(Map<String, dynamic> json) => Movie1(
+NowPlayingModelClass _$NowPlayingModelClassFromJson(
+        Map<String, dynamic> json) =>
+    NowPlayingModelClass(
       id: json['id'] as int,
       title: json['title'] as String,
-      backdrop_path: json['backdrop_path'].toString(),
+      backdrop_path: json['backdrop_path'] as String,
       overview: json['overview'] as String,
       original_language: json['original_language'] as String,
       vote_average: json['vote_average'] as num,
@@ -17,7 +19,9 @@ Movie1 _$Movie1FromJson(Map<String, dynamic> json) => Movie1(
       popularity: json['popularity'] as num,
     );
 
-Map<String, dynamic> _$Movie1ToJson(Movie1 instance) => <String, dynamic>{
+Map<String, dynamic> _$NowPlayingModelClassToJson(
+        NowPlayingModelClass instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
       'backdrop_path': instance.backdrop_path,
