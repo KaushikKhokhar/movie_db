@@ -1,14 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'now_playing.dart';
+part of 'now_playing_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-NowPlayingModelClass _$NowPlayingModelClassFromJson(
-        Map<String, dynamic> json) =>
-    NowPlayingModelClass(
+NowPlayingModel _$NowPlayingModelFromJson(Map<String, dynamic> json) =>
+    NowPlayingModel(
       id: json['id'] as int,
       title: json['title'] as String,
       backdrop_path: json['backdrop_path'] as String,
@@ -19,8 +18,7 @@ NowPlayingModelClass _$NowPlayingModelClassFromJson(
       popularity: json['popularity'] as num,
     );
 
-Map<String, dynamic> _$NowPlayingModelClassToJson(
-        NowPlayingModelClass instance) =>
+Map<String, dynamic> _$NowPlayingModelToJson(NowPlayingModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,

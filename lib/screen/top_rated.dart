@@ -7,7 +7,7 @@ import 'package:movie_db/store/top_rated_store.dart';
 import 'package:movie_db/widget/top_rated_detail_screen.dart';
 import 'package:overlay_support/overlay_support.dart';
 
-import '../color/color.dart';
+import '../color/app_colors.dart';
 
 class TopRated extends StatefulWidget {
   const TopRated({Key? key}) : super(key: key);

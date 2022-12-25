@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:movie_db/color/color.dart';
+import 'package:movie_db/color/app_colors.dart';
 import 'package:movie_db/screen/now_playing.dart';
-import 'package:movie_db/widget/now_playing_detail_screen.dart';
 import 'package:movie_db/screen/popular.dart';
 import 'package:movie_db/screen/top_rated.dart';
 import 'package:movie_db/screen/upcoming.dart';
+import 'package:movie_db/widget/now_playing_details_screen.dart';
 import 'package:movie_db/widget/popular_detail_screen.dart';
 import 'package:movie_db/widget/top_rated_detail_screen.dart';
 import 'package:movie_db/widget/upcoming_detail_screen.dart';
@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: const HomeScreen(),
         routes: {
-          NowPlayingDetailScreen.routeName: (context) =>
-              const NowPlayingDetailScreen(),
+          NowPlayingDetailsScreen.routeName: (context) =>
+              const NowPlayingDetailsScreen(),
           PopularDetailScreen.routeName: (context) =>
               const PopularDetailScreen(),
           TopRatedDetailScreen.routeName: (context) =>

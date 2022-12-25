@@ -2,19 +2,21 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:movie_db/color/color.dart';
+import 'package:mobx/mobx.dart';
+import 'package:movie_db/color/app_colors.dart';
 import '../store/now_playing_store.dart';
 
-class NowPlayingDetailScreen extends StatefulWidget {
-  static const routeName = '/now-playing-detail-screen';
+class NowPlayingDetailsScreen extends StatefulWidget {
+  static const routeName = 'detail-screen';
 
-  const NowPlayingDetailScreen({Key? key}) : super(key: key);
+  const NowPlayingDetailsScreen({Key? key}) : super(key: key);
 
   @override
-  State<NowPlayingDetailScreen> createState() => _NowPlayingDetailScreenState();
+  State<NowPlayingDetailsScreen> createState() =>
+      _NowPlayingDetailsScreenState();
 }
 
-class _NowPlayingDetailScreenState extends State<NowPlayingDetailScreen> {
+class _NowPlayingDetailsScreenState extends State<NowPlayingDetailsScreen> {
   double _rating = 0;
 
   MovieStore1 store = MovieStore1();

@@ -1,14 +1,13 @@
 import 'package:mobx/mobx.dart';
-
-import '../http_method/popular_http_method.dart';
-import '../model/popular.dart';
+import 'package:movie_db/api/popular_api.dart';
+import '../model/popular_model.dart';
 
 part 'popular_store.g.dart';
 
 class MovieStore2 = _MovieStroe with _$MovieStore2;
 
 abstract class _MovieStroe with Store {
-  PopularHttpMethod httpClient = PopularHttpMethod();
+  PopularApi httpClient = PopularApi();
 
   @observable
   bool isDataFatched = false;
@@ -22,7 +21,7 @@ abstract class _MovieStroe with Store {
   @observable
   int page = 1;
 
-  ObservableList<PopularModelClass> movies = ObservableList<PopularModelClass>();
+  ObservableList<PopularModel> movies = ObservableList<PopularModel>();
 
   @action
   Future fetchMovie() async {
@@ -62,5 +61,4 @@ abstract class _MovieStroe with Store {
   void deleteTheRate(int id) {
     delRate(id);
   }
-
 }

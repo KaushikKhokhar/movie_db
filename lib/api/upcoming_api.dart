@@ -3,30 +3,32 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:movie_db/all_url.dart';
-import '../model/now_playing.dart';
+import '../model/upcoming_model.dart';
 
-class NowPlayingHttpMethod {
-  List<NowPlayingModelClass> movies = [];
+class UpcomingApi {
+  List<UpcomingModel> movies = [];
 
   Future getMovies(int page) async {
     final response = await http.get(
-      Uri.parse('${AllUrl.fetchMovieForNowPlaying}$page'),
+      Uri.parse(
+        '${AllUrl.fetchMovieForUpcoming}$page',
+      ),
     );
     if (response.statusCode == 200) {
       final result = jsonDecode(response.body);
       movies = (result['results'] as List).map((json) {
-        return NowPlayingModelClass.fromJson(json);
+        return UpcomingModel.fromJson(json);
       }).toList();
-      print('response successful for now playing screen');
+      print('Response is successful for upcoming screen');
       return movies;
     } else {
-      print('Error in URL');
+      print('Error in url');
     }
   }
 
   Future postRate(double rating, int id) async {
     try {
-     final response = await http.post(
+      final response = await http.post(
         Uri.parse(
           '${AllUrl.baseUrl}$id${AllUrl.rate}',
         ),

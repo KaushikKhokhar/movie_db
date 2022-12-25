@@ -7,7 +7,7 @@ import 'package:movie_db/store/upcoming_store.dart';
 import 'package:movie_db/widget/upcoming_detail_screen.dart';
 import 'package:overlay_support/overlay_support.dart';
 
-import '../color/color.dart';
+import '../color/app_colors.dart';
 
 class Upcoming extends StatefulWidget {
   const Upcoming({Key? key}) : super(key: key);

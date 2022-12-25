@@ -2,10 +2,10 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
-part 'popular.g.dart';
+part 'upcoming_model.g.dart';
 
 @JsonSerializable()
-class PopularModelClass {
+class UpcomingModel {
   int id;
   String title;
   String backdrop_path;
@@ -15,7 +15,7 @@ class PopularModelClass {
   String release_date;
   num popularity;
 
-  PopularModelClass({
+  UpcomingModel({
     required this.id,
     required this.title,
     required this.backdrop_path,
@@ -26,7 +26,8 @@ class PopularModelClass {
     required this.popularity,
   });
 
-  factory PopularModelClass.fromJson(Map<String, dynamic> data) => _$PopularModelClassFromJson(data);
+  factory UpcomingModel.fromJson(Map<String, dynamic> data) =>
+      _$UpcomingModelFromJson(data);
 
-  Map<String, dynamic> toJson() => _$PopularModelClassToJson(this);
+  Map<String, dynamic> toJson() => _$UpcomingModelToJson(this);
 }
